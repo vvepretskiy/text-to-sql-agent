@@ -39,6 +39,14 @@ npm run seed         # seed the SQLite database
 
 Copy `.env.sample` → `.env` to get started.
 
+## Data Model
+
+**`customer`** — `id` (PK), `email`, `name`
+
+**`order`** — `id` (PK), `createdate` (TEXT, ISO date), `shippingcost` (REAL), `customerid` (FK → customer), `carrier`, `trackingid`
+
+`order.customerid` references `customer.id`. Always quote table and field names in SQL.
+
 ## Conventions
 
 - All LLM/database calls live in `src/core/actions.ts` as a Next.js server action (`"use server"`)
