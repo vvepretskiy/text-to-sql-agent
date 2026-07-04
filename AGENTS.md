@@ -47,6 +47,15 @@ Copy `.env.sample` → `.env` to get started.
 
 `order.customerid` references `customer.id`. Always quote table and field names in SQL.
 
+## Linting
+
+- Config: `eslint.config.mjs` (ESLint flat config)
+- Extends: `next/core-web-vitals` + `next/typescript`
+- Run: `npm run lint`
+- Do not disable lint rules inline (`eslint-disable`) without a comment explaining why
+- **When writing code, follow ESLint rules proactively** — no unused variables, no `any` types, no missing React keys, consistent import order
+- **After every code change, run `npm run lint` and fix all reported errors before finishing**
+
 ## Conventions
 
 - All LLM/database calls live in `src/core/actions.ts` as a Next.js server action (`"use server"`)

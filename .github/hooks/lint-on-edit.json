@@ -1,0 +1,12 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "command": "npm run lint 2>&1 | tail -30",
+        "cwd": "${workspaceFolder}",
+        "timeout": 30
+      }
+    ]
+  }
+}

@@ -54,7 +54,7 @@ Copy `.env.sample` → `.env` and set:
 
 ## Data Model
 
-Two tables in the SQLite database (defined in `src/core/constants.ts`):
+Tables in the SQLite database (defined in `src/core/constants.ts`):
 
 **`customer`** — `id` (PK), `email`, `name`
 
