@@ -56,6 +56,21 @@ Copy `.env.sample` → `.env` to get started.
 - **When writing code, follow ESLint rules proactively** — no unused variables, no `any` types, no missing React keys, consistent import order
 - **After every code change, run `npm run lint` and fix all reported errors before finishing**
 
+## Guardrails
+
+- Do not generate or execute `DROP`, `TRUNCATE`, or `DELETE` SQL without a scoped `WHERE` clause
+- Do not expose `process.env` values or database file paths in responses or client-side code
+- Do not move LLM or database logic out of `src/core/actions.ts` into client components
+- Do not bypass the `"use server"` boundary — all agent calls must remain server-side
+- Do not add new npm dependencies without a clear, justified need
+- Do not use `SELECT *` in generated SQL — always name columns explicitly
+- Never try to work around the `execute()` SELECT-only guard in `database.ts`; it is intentional
+- Do not log values that could contain PII (customer emails, names) via `console.log`
+- Never hardcode credentials, base URLs, or model names — always read from `process.env`
+- Any new env var must follow the existing pattern: validate presence before use and update `.env.sample`
+- Do not use `as unknown as X` TypeScript casts without a comment explaining why
+- Do not leave commented-out code — remove it instead
+
 ## Conventions
 
 - All LLM/database calls live in `src/core/actions.ts` as a Next.js server action (`"use server"`)
