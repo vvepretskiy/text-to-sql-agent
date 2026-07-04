@@ -44,6 +44,15 @@ Copy `.env.sample` → `.env` and set:
 - Tests live alongside source files (`*.test.ts`); no separate `__tests__` directories
 - Do not add new environment variables without updating `.env.sample`
 
+## Linting
+
+- Config: `eslint.config.mjs` (ESLint flat config)
+- Extends: `next/core-web-vitals` + `next/typescript`
+- Run: `npm run lint`
+- Do not disable lint rules inline (`eslint-disable`) without a comment explaining why
+- **When writing code, follow ESLint rules proactively** — no unused variables, no `any` types, no missing React keys, consistent import order
+- **After every code change, run `npm run lint` and fix all reported errors before finishing**
+
 ## Guardrails
 
 - Do not generate or execute `DROP`, `TRUNCATE`, or `DELETE` SQL without a scoped `WHERE` clause
@@ -51,6 +60,13 @@ Copy `.env.sample` → `.env` and set:
 - Do not move LLM or database logic out of `src/core/actions.ts` into client components
 - Do not bypass the `"use server"` boundary — all agent calls must remain server-side
 - Do not add new npm dependencies without a clear, justified need
+- Do not use `SELECT *` in generated SQL — always name columns explicitly
+- Never try to work around the `execute()` SELECT-only guard in `database.ts`; it is intentional
+- Do not log values that could contain PII (customer emails, names) via `console.log`
+- Never hardcode credentials, base URLs, or model names — always read from `process.env`
+- Any new env var must follow the existing pattern: validate presence before use and update `.env.sample`
+- Do not use `as unknown as X` TypeScript casts without a comment explaining why
+- Do not leave commented-out code — remove it instead
 
 ## Data Model
 
