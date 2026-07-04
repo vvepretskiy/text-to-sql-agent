@@ -53,6 +53,10 @@ VALUES
 }
 
 export async function execute(sql: string) {
+  if (!/^\s*SELECT\b/i.test(sql)) {
+    throw new Error("Only SELECT queries are allowed.");
+  }
+
   return await new Promise((resolve, reject) => {
     try {
       //   db.all("SELECT 'c'.'name', COUNT('o'.'id') FROM 'order' 'o' JOIN 'customer' 'c' ON 'o'.'customerid' = 'c'.'id' GROUP BY 'c'.'name' ORDER BY COUNT('o'.'id') DESC LIMIT 1", (error, result) => {
