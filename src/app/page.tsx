@@ -9,11 +9,11 @@ import {
   AIMessage,
   mapChatMessagesToStoredMessages,
 } from "@langchain/core/messages";
-import { askAgent } from "./actions";
-import { ChatMessage } from "./components/chat-message";
-import { getRenderableMessages } from "./chat-view-model";
-import { SYSTEM_PROMPT } from "./constants";
-import { useAutoScroll } from "./hooks/use-auto-scroll";
+import { askAgent } from "@/core/actions";
+import { ChatMessage } from "@/components/chat-message";
+import { getRenderableMessages } from "@/core/chat-view-model";
+import { SYSTEM_PROMPT } from "@/core/constants";
+import { useAutoScroll } from "@/hooks/use-auto-scroll";
 
 export default function Home() {
   const [inputMessage, setInputMessage] = useState("");

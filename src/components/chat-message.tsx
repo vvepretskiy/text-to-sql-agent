@@ -1,6 +1,6 @@
 import { memo, useMemo } from "react";
 import type { BaseMessage } from "@langchain/core/messages";
-import { formatMessageContent } from "./chat-message.utils";
+import { formatMessageContent } from "../app/utils/format-message-content";
 
 type ChatMessageProps = {
   role: "human" | "ai";

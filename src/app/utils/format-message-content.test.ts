@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatMessageContent } from "./chat-message.utils";
+import { formatMessageContent } from "./format-message-content";
 
 describe("formatMessageContent", () => {
   it("returns plain string content", () => {
